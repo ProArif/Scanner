@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "203879997376",
+    "firebase_url": "https://ml--ai.firebaseio.com",
+    "project_id": "ml--ai",
+    "storage_bucket": "ml--ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203879997376:android:7c70371969d9ff5cdc3225",
+        "android_client_info": {
+          "package_name": "com.nodeers.scanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203879997376-u02fm24s7bs6cubo305u0komo8mv32m5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkwyLYYCVUowyA68bOgDAkIU6ptHrs9_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203879997376-u02fm24s7bs6cubo305u0komo8mv32m5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
