@@ -1,9 +1,7 @@
 package com.nodeers.scanner;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -12,10 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,25 +21,17 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
 import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_camera;
-    private Button btn_gallery;
-    private Uri imgUri;
-    private LinearLayout layout;
-
+    private Button btn_scan;
     private InputImage image;
+    private Uri imgUri;
     private TextRecognizer recognizer;
-
     private TextView tvResult;
-
     Task<Text> result;
-
-
 
 
     @Override
@@ -53,13 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
         recognizer = TextRecognition.getClient();
 
-        layout = (LinearLayout) findViewById(R.id.choice_list);
         tvResult = findViewById(R.id.resultText);
 
-        btn_camera = findViewById(R.id.camera);
-        btn_gallery = findViewById(R.id.gallery);
-
-        btn_camera.setOnClickListener(new View.OnClickListener() {
+        btn_scan = findViewById(R.id.scan);
+        btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e("clicked","btn scan on click");
@@ -69,42 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity(imgUri)
-                        .start(MainActivity.this);
-            }
-        });
         
-    }
-
-    private void openDialog() {
-
-//        Log.e("clicked","entered opedDialog");
-//
-//
-//
-//        TextView tv_camera = layout.findViewById(R.id.cam);
-//        TextView tv_gallery = layout.findViewById(R.id.gallery);
-//
-//        tv_camera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//            }
-//        });
-
-//        tv_gallery.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//
-//            }
-//        });
-
     }
 
     @Override
@@ -114,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
-
 
                 try {
                     image = InputImage.fromFilePath(this, resultUri);
@@ -152,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-                tvResult.setText(resultText);
-
+                if (resultText.equals("")){
+                    tvResult.setText(R.string.notFound);
+                } else {
+                    tvResult.setText(resultText);
+                }
 
                 Toast.makeText(MainActivity.this,
                         " processing image successfull",Toast.LENGTH_LONG).show();

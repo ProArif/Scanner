@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Scanner</string>
+    <string name="notFound">No Text Found on the Image</string>
 </resources>
