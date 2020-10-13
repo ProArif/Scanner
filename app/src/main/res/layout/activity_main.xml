@@ -35,4 +35,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/docScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Document scan"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="277dp"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

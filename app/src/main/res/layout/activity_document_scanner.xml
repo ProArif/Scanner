@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DocumentScanner">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:visibility="gone"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tvExtractedText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result text"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/saveImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save as image" />
+
+    <Button
+        android:id="@+id/textExtract"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Extract Text" />
+
+    <Button
+        android:id="@+id/savePdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save as PDF" />
+</LinearLayout>

@@ -26,7 +26,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -43,8 +44,12 @@ dependencies {
     //image cropper api
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     //text recognition api
     //implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:16.1.1'
+
+
 
 }

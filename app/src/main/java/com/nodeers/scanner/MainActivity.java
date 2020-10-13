@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,14 +25,16 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.IOException;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_scan;
+    private Button btn_scan,btn_docScan;
     private InputImage image;
     private Uri imgUri;
     private TextRecognizer recognizer;
     private TextView tvResult;
     Task<Text> result;
+
 
 
     @Override
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recognizer = TextRecognition.getClient();
+
 
         tvResult = findViewById(R.id.resultText);
 
@@ -51,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
                 CropImage.activity()
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .start(MainActivity.this);
+            }
+        });
+
+        btn_docScan = findViewById(R.id.docScan);
+        btn_docScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(MainActivity.this,DocumentScanner.class));
             }
         });
 
@@ -77,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
                 Exception error = result.getError();
             }
         }
+
+
     }
 
     private void processImage() {
