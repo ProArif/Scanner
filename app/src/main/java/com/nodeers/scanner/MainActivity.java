@@ -2,11 +2,14 @@ package com.nodeers.scanner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,8 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.File;
 import java.io.IOException;
 
 
@@ -42,8 +47,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recognizer = TextRecognition.getClient();
+        //File mydir = this. getDir("ScannedFiles", Context. MODE_PRIVATE);
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory(), "NodeerScanner");
 
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.e("App", "failed to create directory");
+            } else {
+                Log.e("App", " created directory");
+            }
+        }
+
+        recognizer = TextRecognition.getClient();
 
         tvResult = findViewById(R.id.resultText);
 
